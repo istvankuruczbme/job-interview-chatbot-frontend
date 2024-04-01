@@ -1,0 +1,12 @@
+.signin__form {
+	margin-block: 2rem;
+}
+
+.signin__options {
+	display: flex;
+	justify-content: center;
+}
+
+.signin__options__button {
+	border: 1px solid var(--secondary-color-500) !important;
+}

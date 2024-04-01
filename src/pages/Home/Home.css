@@ -1,0 +1,64 @@
+.home__welcome {
+	background: var(--accent-color-gradient);
+}
+
+.home__welcome__container {
+	height: 100svh;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	color: var(--primary-color);
+	padding-inline: 1rem;
+}
+
+.home__title {
+	font-size: 2.5rem;
+	text-align: center;
+}
+
+.home__welcome__description {
+	max-width: 600px;
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.home__welcome__description a {
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+.home__welcome__getStarted {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: stretch;
+	margin-block: 1rem;
+}
+
+.home__welcome__position {
+	border: none;
+	border-radius: var(--br);
+	padding: 0.3rem 0.5rem;
+}
+
+.home__welcome__getStarted__button {
+	color: var(--accent-color-400) !important;
+}
+
+.home__welcome__scroll {
+	animation: slideDown 1s linear infinite;
+}
+
+@keyframes slideDown {
+	0% {
+		translate: 0;
+	}
+	50% {
+		translate: 0 0.5rem;
+	}
+	100% {
+		translate: 0;
+	}
+}

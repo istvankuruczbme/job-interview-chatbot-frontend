@@ -1,0 +1,16 @@
+.delimiter {
+	height: 2px;
+	background-color: var(--secondary-color-500);
+	margin-block: 1rem;
+	position: relative;
+}
+.delimiter::after {
+	content: attr(data-text);
+	font-size: 0.8rem;
+	color: var(--secondary-color-600);
+	background-color: var(--primary-color);
+	padding-inline: 0.5rem;
+	position: absolute;
+	left: 50%;
+	translate: -50% -50%;
+}

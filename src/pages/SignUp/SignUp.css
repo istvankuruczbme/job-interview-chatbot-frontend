@@ -1,0 +1,9 @@
+.signup__form {
+	margin-block: 2rem;
+}
+
+.signup__form__text {
+	font-size: 0.7rem;
+	font-weight: 500;
+	margin-top: 0.5rem;
+}

@@ -1,0 +1,30 @@
+.chatRow {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--text-color-400);
+	border-radius: var(--br);
+	padding: 0.4rem 0.5rem;
+}
+.chatRow:hover {
+	background-color: var(--secondary-color-500);
+}
+.chatRow:hover .chatRow__delete {
+	color: var(--red-color);
+}
+
+.chatRow__position {
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.chatRow__delete {
+	color: transparent;
+	border-radius: var(--br-pill);
+	padding: 0.4rem;
+}
+.chatRow__delete:hover {
+	background-color: var(--secondary-color-600);
+}

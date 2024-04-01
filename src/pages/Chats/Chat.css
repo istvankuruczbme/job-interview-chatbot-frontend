@@ -1,0 +1,15 @@
+.chat {
+	--header-height: 2.5rem;
+	--message-input-height: 3rem;
+
+	flex: 1;
+	height: calc(100svh - var(--nav-height));
+	height: 100%;
+	position: relative;
+}
+
+.chat__messages {
+	height: calc(100svh - var(--header-height) - var(--nav-height) - var(--message-input-height));
+	padding: 0.5rem;
+	overflow-y: auto;
+}

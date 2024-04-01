@@ -1,0 +1,4 @@
+.chats {
+	height: calc(100svh - var(--nav-height));
+	display: flex;
+}

@@ -1,0 +1,74 @@
+.input {
+	width: fit-content;
+}
+.input--full {
+	width: 100%;
+}
+
+.input__label {
+	display: inline-block;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--text-color-500);
+	margin-bottom: 0.3rem;
+}
+
+.input__container {
+	--border-height: 1.5px;
+
+	display: flex;
+	gap: 0.3rem;
+	align-items: center;
+	position: relative;
+}
+.input__container::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: var(--border-height);
+	background-color: var(--secondary-color-500);
+	position: absolute;
+	bottom: -3px;
+	left: 0;
+}
+.input__container::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: var(--border-height);
+	background-color: var(--accent-color-400);
+	position: absolute;
+	bottom: -3px;
+	left: 50%;
+	translate: -50% 0;
+	transition: width 0.3s linear;
+}
+
+.input__container:focus-within::after,
+.input__container:has(.input__input:not(:placeholder-shown))::after {
+	width: 100%;
+}
+
+.input__input {
+	flex: 1;
+	font-family: inherit;
+	font-size: 0.9rem;
+	color: var(--text-color-700);
+	background: none;
+	border: none;
+}
+.input__input:focus {
+	outline: none;
+}
+
+.input__icon {
+	color: var(--secondary-color-600);
+	transition: color 0.3s linear;
+}
+.input:focus-within .input__icon {
+	color: var(--accent-color-400);
+}
+.input__icon--password {
+	color: var(--accent-color-400);
+	cursor: pointer;
+}

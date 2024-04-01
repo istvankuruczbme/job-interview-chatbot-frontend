@@ -1,0 +1,64 @@
+.button {
+	--text-color: var(--primary-color);
+	--bg-color: var(--accent-color-400);
+	--shadow-color: var(--accent-color-100);
+
+	font-family: inherit;
+	font-size: 0.95rem;
+	font-weight: 500;
+	color: var(--text-color);
+	background-color: var(--bg-color);
+	border: 0.1rem solid var(--bg-color);
+	border-radius: var(--br);
+	box-shadow: 0.3rem 0.3rem 0.3rem var(--shadow-color);
+	padding: 0.6rem 1.5rem;
+	transition: background-color 0.3s linear, border-color 0.3s linear;
+	cursor: pointer;
+}
+.button:hover {
+	background-color: var(--accent-color-500);
+}
+.button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+.button:disabled:hover {
+	background-color: var(--accent-color-400);
+}
+
+.button--centered {
+	display: block;
+	margin-inline: auto;
+}
+
+.button--full {
+	width: 100%;
+}
+
+.button--circle {
+	width: 3rem;
+	aspect-ratio: 1/1;
+	border-radius: var(--br-pill);
+	padding: 0.7rem;
+}
+
+/* Variants */
+.button--primary {
+	--text-color: var(--secondary-color-600);
+	--bg-color: var(--primary-color);
+
+	box-shadow: 0 0 0;
+}
+.button--primary:hover {
+	background-color: var(--secondary-color-400);
+}
+
+.button--accentLight {
+	--text-color: var(--accent-color-400);
+	--bg-color: var(--accent-color-100);
+
+	box-shadow: 0 0 0;
+}
+.button--accentLight:hover {
+	background-color: var(--accent-color-200);
+}

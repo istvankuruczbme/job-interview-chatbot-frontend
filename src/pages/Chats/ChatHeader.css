@@ -1,0 +1,26 @@
+.chatHeader {
+	height: var(--header-height);
+	display: flex;
+	gap: 2rem;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 0.1rem solid var(--secondary-color-500);
+	padding-inline: 2rem;
+	position: sticky;
+	top: 0;
+}
+
+.chatHeader__position {
+	font-weight: 500;
+}
+
+.chatHeader__delete {
+	color: var(--red-color);
+	border-radius: var(--br-pill);
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+.chatHeader__delete:hover {
+	background-color: var(--secondary-color-500);
+}

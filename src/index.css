@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	/* Layout */
+	--nav-height: 50px;
+
+	/* Colors */
+	--primary-color: #ffffff;
+	--primary-color-dark: #1a1a1a; /* for dark theme */
+
+	--secondary-color-400: hsl(0, 0%, 96%);
+	--secondary-color-500: hsl(0, 0%, 86%);
+	--secondary-color-600: hsl(0, 0%, 76%);
+
+	--accent-color-100: hsl(184, 80%, 90%);
+	--accent-color-200: hsl(184, 80%, 75%);
+	--accent-color-400: hsl(184, 80%, 45%);
+	--accent-color-500: hsl(184, 80%, 35%);
+	--accent-color-gradient: linear-gradient(to bottom right, var(--accent-color-400), #29d3c4);
+
+	--text-color-400: #3a3a3a;
+	--text-color-700: #000000;
+
+	--red-color: #b53f3f;
+
+	/* Border radius */
+	--br-small: 0.25rem;
+	--br: 0.5rem;
+	--br-pill: 999rem;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+
+	color: var(--text-color-400);
+	background-color: var(--primary-color);
+}
+
+a {
+	text-decoration: none;
+	color: var(--accent-color-400);
+}
+
+input,
+textarea {
+	font-family: "Open Sans", sans-serif;
+	font-size: 0.9rem;
+}
