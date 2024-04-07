@@ -1,0 +1,13 @@
+.iconButton {
+	width: 1rem;
+	height: 1rem;
+	border-radius: var(--br-pill);
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+.iconButton:hover,
+.iconButton:focus {
+	background-color: var(--secondary-color-500);
+	outline: none;
+}

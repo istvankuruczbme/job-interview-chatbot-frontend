@@ -1,0 +1,21 @@
+.error {
+	width: 100%;
+	height: calc(100svh - var(--nav-height));
+	display: grid;
+	place-items: center;
+}
+
+.error__inner {
+	text-align: center;
+}
+
+.error__icon {
+	font-size: 5rem;
+	color: var(--secondary-color-500);
+	margin-bottom: 1rem;
+}
+
+.error__message {
+	font-weight: 500;
+	margin-bottom: 1rem;
+}

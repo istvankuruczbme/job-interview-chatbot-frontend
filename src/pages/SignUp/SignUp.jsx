@@ -12,8 +12,10 @@ import AuthText from "../../components/ui/AuthText/AuthText";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import addUserToDB from "../../utils/user/addUserToDB";
+import { useStateValue } from "../../contexts/context API/StateProvider";
 
 function SignUp() {
+	const [, dispatch] = useStateValue();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -27,6 +29,16 @@ function SignUp() {
 		// Check if the passwords match
 		if (password !== passwordConfirm) {
 			console.log("The passwords don't match");
+
+			dispatch({
+				type: "SET_FEEDBACK",
+				feedback: {
+					show: true,
+					type: "error",
+					message: "The passwords don't match",
+					details: "",
+				},
+			});
 			return;
 		}
 
@@ -40,6 +52,31 @@ function SignUp() {
 			navigate("/");
 		} catch (e) {
 			console.log("Error signing up the user: \n", e);
+
+			const error = {
+				message: "Error signing in the user",
+				details: "Please try again.",
+			};
+			switch (e.code) {
+				case "auth/email-already-in-use":
+					error.message = "Email already in use";
+					error.details = "Please use a different email address.";
+					break;
+
+				default: {
+					error.message = "Error signing in the user";
+					error.details = e.message;
+				}
+			}
+
+			dispatch({
+				type: "SET_FEEDBACK",
+				feedback: {
+					show: true,
+					type: "error",
+					...error,
+				},
+			});
 		}
 	}
 
@@ -82,7 +119,7 @@ function SignUp() {
 				{password === passwordConfirm && <br />}
 				{password !== passwordConfirm && <p className="signup__form__text">The passwords don&apos;t march.</p>}
 				<CancelSaveButtons>
-					<Button type="button" variant="accentLight" fullWidth>
+					<Button type="button" variant="accentLight" fullWidth onClick={() => navigate("/")}>
 						Cancel
 					</Button>
 					<Button type="submit" fullWidth disabled={disableSignUp}>

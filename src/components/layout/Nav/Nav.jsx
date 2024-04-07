@@ -5,12 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket, faArrowRightToBracket, faRobot } from "@fortawesome/free-solid-svg-icons";
 import { useStateValue } from "../../../contexts/context API/StateProvider";
 import { useLayoutEffect, useRef } from "react";
-import { faComment } from "@fortawesome/free-regular-svg-icons";
-import { signOut } from "firebase/auth";
-import { auth } from "../../../config/firebase";
+import { faComment, faUser } from "@fortawesome/free-regular-svg-icons";
 import checkIfMobileDevice from "../../../utils/checkIfMobileDevice";
-
-const defaultUserPhotoUrl = "https://www.gravatar.com/avatar/000?d=mp";
+import { userDefaultPhotoUrl } from "../../../assets/userDefaultPhotoUrl";
+import Submenu from "../../ui/Submenu/Submenu";
+import signOutUser from "../../../utils/user/signOutUser";
 
 function Nav() {
 	const [{ user }] = useStateValue();
@@ -34,20 +33,11 @@ function Nav() {
 			}
 		}
 
-		window.addEventListener("scroll", handleScroll);
+		handleScroll();
 
+		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [location.pathname]);
-
-	async function signOutUser() {
-		try {
-			await signOut(auth);
-
-			navigate("/");
-		} catch (e) {
-			console.log("Error signing out user:\n", e);
-		}
-	}
 
 	return (
 		<nav ref={navRef} className="nav nav--top">
@@ -59,21 +49,21 @@ function Nav() {
 				<div className="nav__user">
 					{isMobilDevice ? (
 						<img
-							src={user && user?.photoUrl ? user.photoUrl : defaultUserPhotoUrl}
+							src={user && user?.photoUrl ? user.photoUrl : userDefaultPhotoUrl}
 							alt={user?.name}
 							className="nav__user__img"
 						/>
 					) : (
 						<Link to="/profile" className="nav__user">
 							<img
-								src={user && user?.photoUrl ? user.photoUrl : defaultUserPhotoUrl}
+								src={user && user?.photoUrl ? user.photoUrl : userDefaultPhotoUrl}
 								alt={user?.name}
 								className="nav__user__img"
 							/>
 						</Link>
 					)}
 
-					<ul className="nav__userMenu">
+					<Submenu className="nav__userMenu">
 						{user && (
 							<li className="nav__userMenu__item">
 								<Link to="/chats">
@@ -82,10 +72,18 @@ function Nav() {
 								</Link>
 							</li>
 						)}
+						{user && isMobilDevice && (
+							<li className="nav__userMenu__item">
+								<Link to="/profile">
+									<FontAwesomeIcon icon={faUser} />
+									Profile
+								</Link>
+							</li>
+						)}
 
 						{user ? (
 							<li className={`nav__userMenu__item nav__userMenu__item--signout nav__userMenu__item--divider`}>
-								<Link onClick={signOutUser}>
+								<Link onClick={() => signOutUser(navigate)}>
 									<FontAwesomeIcon icon={faArrowRightFromBracket} />
 									Sign Out
 								</Link>
@@ -98,7 +96,7 @@ function Nav() {
 								</Link>
 							</li>
 						)}
-					</ul>
+					</Submenu>
 				</div>
 			</Container>
 		</nav>

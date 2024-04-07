@@ -1,5 +1,11 @@
 export const initialState = {
 	user: null,
+	feedback: {
+		show: false,
+		type: "info",
+		message: "",
+		details: "",
+	},
 };
 
 export default function reducer(state, action) {
@@ -8,6 +14,12 @@ export default function reducer(state, action) {
 			return {
 				...state,
 				user: action.user,
+			};
+
+		case "SET_FEEDBACK":
+			return {
+				...state,
+				feedback: action.feedback,
 			};
 
 		default:

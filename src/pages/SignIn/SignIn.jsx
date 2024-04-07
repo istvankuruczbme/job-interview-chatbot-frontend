@@ -16,8 +16,10 @@ import { auth, googleProvider } from "../../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import checkIfNewUser from "../../utils/user/checkIfNewUser";
 import addUserToDB from "../../utils/user/addUserToDB";
+import { useStateValue } from "../../contexts/context API/StateProvider";
 
 function SignIn() {
+	const [, dispatch] = useStateValue();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const signInButton = useRef();
@@ -37,11 +39,35 @@ function SignIn() {
 
 			navigate("/");
 		} catch (e) {
-			console.log("Error signing in the user: \n", e);
+			// console.log("Error signing in the user: \n", e);
+
+			const error = {
+				message: "Error signing in the user",
+				details: "Please try again.",
+			};
+			switch (e.code) {
+				case "auth/invalid-credential":
+					error.message = "Invalid credentials";
+					break;
+
+				default: {
+					error.message = "Error signing in the user";
+					error.details = e.message;
+				}
+			}
+
+			dispatch({
+				type: "SET_FEEDBACK",
+				feedback: {
+					show: true,
+					type: "error",
+					...error,
+				},
+			});
 		}
 
 		// Enable the button
-		signInButton.current.setAttribute("disabled", "false");
+		signInButton.current.removeAttribute("disabled");
 	}
 
 	async function signInUserWithGoogle() {
@@ -62,7 +88,7 @@ function SignIn() {
 		}
 
 		// Enable the button
-		signInWithGoogleButton.current.setAttribute("disabled", "false");
+		signInButton.current.removeAttribute("disabled");
 	}
 
 	return (
@@ -93,7 +119,7 @@ function SignIn() {
 				/>
 				<br />
 				<CancelSaveButtons>
-					<Button type="button" variant="accentLight" fullWidth>
+					<Button type="button" variant="accentLight" fullWidth onClick={() => navigate("/")}>
 						Cancel
 					</Button>
 					<Button ref={signInButton} type="submit" fullWidth disabled={disableSignIn}>

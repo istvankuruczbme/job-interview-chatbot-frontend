@@ -4,7 +4,7 @@
 	place-items: center;
 	background-color: var(--primary-color);
 	border-top: 1px solid var(--secondary-color-500);
-	box-shadow: 0 0 0.2rem var(--secondary-color-500);
+	/* box-shadow: 0 0 0.2rem var(--secondary-color-500); */
 	padding: 0.2rem 2%;
 	position: absolute;
 	bottom: 0rem;

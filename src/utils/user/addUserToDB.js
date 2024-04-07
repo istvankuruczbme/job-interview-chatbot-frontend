@@ -9,6 +9,7 @@ export default async function addUserToDB(user) {
 			},
 			name: user.displayName ?? user.email,
 			photoUrl: user.photoURL,
+			email: user.email,
 		});
 	} catch (e) {
 		console.log("Error adding user to the database:\n", e);

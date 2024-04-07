@@ -1,0 +1,90 @@
+.message {
+	max-width: min(75%, 500px);
+	display: flex;
+	gap: 0.3rem;
+	align-items: flex-end;
+	margin-bottom: 1.5rem;
+	position: relative;
+}
+.message--assistant {
+	--text-color: var(--text-color-400);
+	--bg-color: var(--secondary-color-400);
+}
+.message--user {
+	--text-color: var(--primary-color);
+	--bg-color: var(--accent-color-400);
+
+	justify-content: flex-end;
+	margin-left: auto;
+}
+.message:hover .message__timestamp {
+	color: var(--text-color-400);
+}
+
+.message__robot {
+	width: 1.5rem;
+	height: 1.5rem;
+	color: var(--accent-color-400);
+	border-radius: var(--br-pill);
+}
+
+.message__main {
+	background-color: var(--bg-color);
+	border-radius: calc(var(--br) * 3);
+	padding: 1rem;
+}
+.message--assistant .message__main {
+	border-bottom-left-radius: 0;
+}
+.message--user .message__main {
+	border-bottom-right-radius: 0;
+}
+
+.message__content {
+	font-size: 0.9rem;
+	line-height: 1.5;
+	text-align: justify;
+	color: var(--text-color);
+}
+.message--assistant .message__content--typing {
+	overflow: hidden;
+	max-height: 0;
+	animation: typing 4s steps(40, end) forwards; /* The typing effect */
+}
+@keyframes typing {
+	from {
+		max-height: 0;
+	}
+	to {
+		max-height: 800px; /* Large enough to show all text */
+	}
+}
+.message--thinking .message__content {
+	animation: pulse 800ms linear infinite alternate;
+}
+@keyframes pulse {
+	to {
+		color: var(--secondary-color-600);
+	}
+}
+
+.message__timestamp {
+	font-size: 0.7rem;
+	font-weight: 500;
+	color: transparent;
+	position: absolute;
+	top: -1rem;
+	transition: color 300ms ease-in-out;
+}
+.message--assistant .message__timestamp {
+	left: 2.8rem;
+}
+.message--user .message__timestamp {
+	right: 2.8rem;
+}
+
+.message__img {
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: var(--br-pill);
+}

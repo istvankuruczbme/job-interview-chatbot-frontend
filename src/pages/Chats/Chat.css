@@ -1,5 +1,5 @@
 .chat {
-	--header-height: 2.5rem;
+	--header-height: 3rem;
 	--message-input-height: 3rem;
 
 	flex: 1;
@@ -10,6 +10,30 @@
 
 .chat__messages {
 	height: calc(100svh - var(--header-height) - var(--nav-height) - var(--message-input-height));
-	padding: 0.5rem;
-	overflow-y: auto;
+}
+.chat__messages > div {
+	padding: 1rem 0.5rem;
+}
+.chat__messages--noTransition {
+	transition: none;
+}
+
+.chat__messages__follow {
+	display: none;
+}
+
+.chat__messages__delimiter {
+	margin-bottom: 2rem;
+}
+
+.chat__messages > *:last-child {
+	margin-bottom: 0;
+}
+
+.showQuestion__level {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
 }

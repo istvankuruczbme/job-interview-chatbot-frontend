@@ -20,7 +20,7 @@
 
 .home__welcome__description {
 	max-width: 600px;
-	font-size: 0.9rem;
+	line-height: 1.5;
 	text-align: center;
 }
 
@@ -38,9 +38,13 @@
 }
 
 .home__welcome__position {
-	border: none;
+	border: 0.1rem solid var(--primary-color);
 	border-radius: var(--br);
 	padding: 0.3rem 0.5rem;
+}
+.home__welcome__position:focus {
+	border-color: var(--secondary-color-600);
+	outline: none;
 }
 
 .home__welcome__getStarted__button {
@@ -61,4 +65,61 @@
 	100% {
 		translate: 0;
 	}
+}
+
+.home__section {
+	padding: 2rem 1rem;
+}
+
+.home__subtitle {
+	width: fit-content;
+	font-size: 1.8rem;
+	margin-bottom: 1.5rem;
+	position: relative;
+}
+.home__subtitle::after {
+	content: "";
+	width: 100%;
+	height: 0.1rem;
+	background-color: var(--accent-color-400);
+	border-radius: var(--br-pill);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+.home__highlight {
+	font-weight: 700;
+}
+
+.home__p {
+	margin-bottom: 1rem;
+}
+
+.home__steps {
+	margin-left: 1rem;
+}
+
+.home__steps__item {
+	margin-bottom: 1rem;
+}
+
+.home__steps__item h3 {
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem;
+}
+
+.home__steps__item p:not(:last-child) {
+	margin-bottom: 0.5rem;
+}
+
+.home__footer {
+	color: var(--primary-color);
+	background-color: var(--primary-color-dark);
+	padding: 3rem 1rem;
+}
+
+.home__footer__copyright {
+	font-size: 0.9rem;
+	text-align: center;
 }

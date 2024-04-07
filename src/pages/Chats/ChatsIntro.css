@@ -1,0 +1,45 @@
+.chatsIntro {
+	width: 100%;
+	display: grid;
+	place-items: center;
+	padding: 2rem;
+}
+
+.chatsIntro__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.chatsIntro__p {
+	font-size: 0.9rem;
+	text-align: center;
+}
+
+.chatsIntro__newChat {
+	display: flex;
+	gap: 2rem;
+	margin-block: 1rem;
+}
+
+.chatsIntro__subtitle {
+	margin-top: 2rem;
+}
+
+.chatsIntro__prevChats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.chatsIntro__prevChats__button {
+	max-width: 250px;
+	text-wrap: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.chatsIntro__prevChats__button::first-letter {
+	text-transform: uppercase;
+}

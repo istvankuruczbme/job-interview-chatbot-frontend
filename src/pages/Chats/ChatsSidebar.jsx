@@ -1,38 +1,41 @@
-import { faAngleLeft, faUserDoctor } from "@fortawesome/free-solid-svg-icons";
+/* eslint-disable no-mixed-spaces-and-tabs */
+import PropTypes from "prop-types";
+import { faUserDoctor } from "@fortawesome/free-solid-svg-icons";
 import Input from "../../components/form/Input/Input";
-import "./ChatsSidebar.css";
 import Button from "../../components/ui/Button/Button";
 import { useState } from "react";
 import ChatRow from "../../components/ui/ChatRow/ChatRow";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import checkIfMobileDevice from "../../utils/checkIfMobileDevice";
+import createNewChat from "../../utils/chat/createNewChat";
+import { useStateValue } from "../../contexts/context API/StateProvider";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../components/ui/Loader/Loader";
+import "./ChatsSidebar.css";
+import MobileSidebar from "../../components/layout/MobileSidebar/MobileSidebar";
 
-function ChatsSidebar() {
+function ChatsSidebar({ chats, loading, setRefreshChats }) {
 	const isMobileDevice = checkIfMobileDevice();
 
+	const [{ user }, dispatch] = useStateValue();
 	const [showSidebar, setShowSidebar] = useState(!isMobileDevice);
 	const [position, setPosition] = useState("");
+	const navigate = useNavigate();
 
 	const disableStartNewChat = position === "";
 
 	return (
-		<div className={`chatsSidebar${showSidebar ? " chatsSidebar--show" : ""}`}>
-			<div
-				className="chatsSidebar__collapse"
-				title={`${showSidebar ? "Hide" : "Show"} sidebar`}
-				onClick={() => setShowSidebar((prev) => !prev)}>
-				<FontAwesomeIcon icon={faAngleLeft} />
-			</div>
-
+		<MobileSidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}>
 			<section className="chatsSidebar__newChat">
 				<h2 className="chatsSidebar__title">Start new chat</h2>
 
-				<form className="chatsSidebar__newChat__form" onSubmit={() => console.log("New chat form submitted.")}>
+				<form
+					className="chatsSidebar__newChat__form"
+					onSubmit={(e) => createNewChat(e, position, setPosition, user._id, setRefreshChats, navigate, dispatch)}>
 					<Input
 						type="text"
 						id="newChatPosition"
 						label="Position"
-						placeholder="Your position"
+						placeholder="My position"
 						icon={faUserDoctor}
 						fullWidth
 						required
@@ -55,12 +58,23 @@ function ChatsSidebar() {
 				<h2 className="chatsSidebar__title">Previous chats</h2>
 
 				<div className="chatsSidebar__prevChats__container">
-					<ChatRow id="1" position="alma alma alma alma alma alma" />
-					<ChatRow id="1" position="alma" />
+					{!loading ? (
+						chats.map((chat) => (
+							<ChatRow key={chat._id} id={chat._id} position={chat.position} setRefreshChats={setRefreshChats} />
+						))
+					) : (
+						<Loader text="Loading positions..." />
+					)}
 				</div>
 			</section>
-		</div>
+		</MobileSidebar>
 	);
 }
+
+ChatsSidebar.propTypes = {
+	chats: PropTypes.array.isRequired,
+	loading: PropTypes.bool.isRequired,
+	setRefreshChats: PropTypes.func.isRequired,
+};
 
 export default ChatsSidebar;

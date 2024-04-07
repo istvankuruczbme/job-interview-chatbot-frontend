@@ -11,13 +11,16 @@
 	background-color: var(--secondary-color-500);
 }
 .chatRow:hover .chatRow__delete {
-	color: var(--red-color);
+	color: var(--red-color-400);
 }
 
 .chatRow__position {
 	text-wrap: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
+}
+.chatRow__position::first-letter {
+	text-transform: uppercase;
 }
 
 .chatRow__delete {

@@ -8,19 +8,45 @@
 	padding-inline: 2rem;
 	position: sticky;
 	top: 0;
+	z-index: 5;
 }
 
 .chatHeader__position {
 	font-weight: 500;
+	margin-left: 0.5rem;
+}
+.chatHeader__position::first-letter {
+	text-transform: uppercase;
 }
 
-.chatHeader__delete {
-	color: var(--red-color);
-	border-radius: var(--br-pill);
-	padding: 0.5rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
+.chatHeader__right {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-end;
+	align-items: center;
 }
-.chatHeader__delete:hover {
+
+.chatHeader__more:hover .chatHeader__settings {
+	display: block;
+}
+
+.chatHeader__settings {
+	top: calc(var(--header-height) - 0.5rem);
+	right: 2rem;
+}
+
+.chatHeader__menuitem {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	font-size: 0.9rem;
+	text-wrap: nowrap;
+	padding: 0.3rem 0.5rem;
+	cursor: pointer;
+}
+.chatHeader__menuitem--red {
+	color: var(--red-color-400);
+}
+.chatHeader__menuitem:hover {
 	background-color: var(--secondary-color-500);
 }

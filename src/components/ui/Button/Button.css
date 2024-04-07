@@ -22,9 +22,6 @@
 	opacity: 0.5;
 	cursor: not-allowed;
 }
-.button:disabled:hover {
-	background-color: var(--accent-color-400);
-}
 
 .button--centered {
 	display: block;
@@ -61,4 +58,11 @@
 }
 .button--accentLight:hover {
 	background-color: var(--accent-color-200);
+}
+.button--red {
+	--text-color: var(--primary-color);
+	--bg-color: var(--red-color-400);
+}
+.button--red:hover {
+	background-color: var(--red-color-500);
 }

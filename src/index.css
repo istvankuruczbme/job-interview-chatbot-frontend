@@ -14,22 +14,29 @@
 
 	/* Colors */
 	--primary-color: #ffffff;
-	--primary-color-dark: #1a1a1a; /* for dark theme */
+	--primary-color-dark: hsl(0, 0%, 12%); /* for dark theme */
 
-	--secondary-color-400: hsl(0, 0%, 96%);
+	--secondary-color-400: hsl(0, 0%, 95%);
 	--secondary-color-500: hsl(0, 0%, 86%);
 	--secondary-color-600: hsl(0, 0%, 76%);
+	--secondary-color-dark-400: hsl(0, 0%, 20%);
+	--secondary-color-dark-500: hsl(0, 0%, 25%);
+	--secondary-color-dark-600: hsl(0, 0%, 30%);
 
 	--accent-color-100: hsl(184, 80%, 90%);
 	--accent-color-200: hsl(184, 80%, 75%);
-	--accent-color-400: hsl(184, 80%, 45%);
+	--accent-color-400: #17c2cf;
 	--accent-color-500: hsl(184, 80%, 35%);
 	--accent-color-gradient: linear-gradient(to bottom right, var(--accent-color-400), #29d3c4);
 
 	--text-color-400: #3a3a3a;
 	--text-color-700: #000000;
+	--text-color-dark-400: hsl(0, 0%, 90%);
+	--text-color-dark-700: hsl(0, 0%, 100%);
 
-	--red-color: #b53f3f;
+	--green-color: hsl(143, 80%, 45%);
+	--red-color-400: hsl(0, 60%, 48%);
+	--red-color-500: hsl(0, 60%, 38%);
 
 	/* Border radius */
 	--br-small: 0.25rem;

@@ -19,7 +19,7 @@ Button.displayName = "Button";
 
 Button.propTypes = {
 	className: PropTypes.string,
-	variant: PropTypes.oneOf(["primary", "accent", "accentLight"]),
+	variant: PropTypes.oneOf(["primary", "accent", "accentLight", "red"]),
 	outlined: PropTypes.bool,
 	centered: PropTypes.bool,
 	fullWidth: PropTypes.bool,

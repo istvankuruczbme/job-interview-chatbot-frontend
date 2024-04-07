@@ -23,6 +23,7 @@
 	display: flex;
 	align-items: center;
 	padding-inline: 1rem;
+	position: relative;
 }
 
 .nav__logo {
@@ -46,20 +47,14 @@
 }
 
 .nav__user__img {
-	width: 40px;
+	width: 36px;
 	aspect-ratio: 1/1;
 	border-radius: var(--br-pill);
 }
 
 .nav__userMenu {
 	display: none;
-	list-style: none;
-	background-color: var(--primary-color);
-	border-radius: var(--br);
-	box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem var(--secondary-color-500);
-	padding-block: 0.5rem;
-	position: fixed;
-	top: var(--nav-height);
+	top: calc(var(--nav-height) - 0.2rem);
 	right: 1rem;
 }
 
@@ -78,7 +73,7 @@
 	gap: 0.3rem;
 	align-items: center;
 	color: var(--text-color-400);
-	padding: 0.3rem 1rem;
+	padding: 0.5rem 1rem;
 }
 
 .nav__userMenu__item--divider {
@@ -86,7 +81,7 @@
 }
 
 .nav__userMenu__item--signout a {
-	color: var(--red-color);
+	color: var(--red-color-400);
 }
 
 .nav__userMenu__item--signin a {

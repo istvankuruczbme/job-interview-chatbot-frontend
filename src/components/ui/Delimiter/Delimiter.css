@@ -1,8 +1,11 @@
 .delimiter {
 	height: 2px;
-	background-color: var(--secondary-color-500);
 	margin-block: 1rem;
 	position: relative;
+}
+
+.delimiter--line {
+	background-color: var(--secondary-color-400);
 }
 .delimiter::after {
 	content: attr(data-text);
